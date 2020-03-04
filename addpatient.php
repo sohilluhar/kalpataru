@@ -1,3 +1,6 @@
+<?php
+include("include/connection.php");
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,7 +51,7 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form id="quickForm" role="form">
+                            <form id="quickForm" role="form" method="POST">
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="uhidno">UH ID Number</label>
@@ -272,7 +275,7 @@
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
-                                    <button class="btn btn-primary" type="submit">Add Patient</button>
+                                    <input class="btn btn-primary" type="submit" value="Add Patient" name="add_patient">
                                 </div>
                             </form>
                         </div>
@@ -319,5 +322,84 @@ include "include/javascripts.php";
 
 
 </script>
+
+
+<?php
+if (isset($_POST['add_patient'])) {
+    $uhidno = $_POST['uhidno'];
+    $ssano = $_POST['ssano'];
+    $adharnumber = $_POST['adharnumber'];
+    $patientname = $_POST['patientname'];
+    $patientphone = $_POST['patientphone'];
+    $patientage = $_POST['patientage'];
+    $patientgender = $_POST['patientgender'];
+    $patientaddress = $_POST['patientaddress'];
+    $patientsymptoms = $_POST['patientsymptoms'];
+
+
+    //=============checkbox isset=======================
+
+    if (isset($_POST['bpcheckbox'])) {
+        $bpcheckbox = $_POST['bpcheckbox'];
+    } else {
+        $bpcheckbox = '';
+    }
+
+    if (isset($_POST['sugarcheckbox'])) {
+        $sugarcheckbox = $_POST['sugarcheckbox'];
+    } else {
+        $sugarcheckbox = '';
+    }
+
+    if (isset($_POST['heartcheckbox'])) {
+        $heartcheckbox = $_POST['heartcheckbox'];
+    } else {
+        $heartcheckbox = '';
+    }
+
+    if (isset($_POST['kidneycheckbox'])) {
+        $kidneycheckbox = $_POST['kidneycheckbox'];
+    } else {
+        $kidneycheckbox = '';
+    }
+
+    if (isset($_POST['paralysischeckbox'])) {
+        $paralysischeckbox = $_POST['paralysischeckbox'];
+    } else {
+        $paralysischeckbox = '';
+    }
+
+    if (isset($_POST['thyroidcheckbox'])) {
+        $thyroidcheckbox = $_POST['thyroidcheckbox'];
+    } else {
+        $thyroidcheckbox = '';
+    }
+
+    //================================================
+
+
+    $patientdiagnosis = $_POST['patientdiagnosis'];
+    $patientbloodgroup = $_POST['patientbloodgroup'];
+    $patienthb = $_POST['patienthb'];
+    $patientkft = $_POST['patientkft'];
+    $patientecg = $_POST['patientecg'];
+    $patienteco = $_POST['patienteco'];
+    $patienttreatment = $_POST['patienttreatment'];
+    $patientpriscription = $_POST['patientpriscription'];
+    $patientspecialadvise = $_POST['patientspecialadvise'];
+
+    $query = "INSERT INTO `patient_details` 
+(`uhidno`, `ssano`, `adharnumber`, `patientname`, `patientphone`, `patientage`, `patientgender`, `patientaddress`, `patientsymptoms`, `bpcheckbox`, `sugarcheckbox`, `heartcheckbox`, `kidneycheckbox`, `paralysischeckbox`, `thyroidcheckbox`, `patientdiagnosis`, `patientbloodgroup`, `patienthb`, `patientkft`, `patientecg`, `patienteco`, `patienttreatment`, `patientpriscription`, `patientspecialadvise`) 
+VALUES
+('$uhidno', '$ssano', '$adharnumber', '$patientname', '$patientphone', '$patientage', '$patientgender', '$patientaddress', '$patientsymptoms', '$bpcheckbox', '$sugarcheckbox', '$heartcheckbox', '$kidneycheckbox', '$paralysischeckbox', '$thyroidcheckbox', '$patientdiagnosis', '$patientbloodgroup', '$patienthb', '$patientkft', '$patientecg','$patienteco', '$patienttreatment', '$patientpriscription', '$patientspecialadvise');
+";
+
+    mysqli_query($con, $query);
+
+}
+
+?>
+
+
 </body>
 </html>
