@@ -5,6 +5,7 @@
 
     include "include/connection.php";
     include "include/html_head.php";
+    include("include/checkuser.php");
 
     ?>
 </head>
@@ -43,7 +44,7 @@
 
                 <!-- /.container-fluid -->
                 <div class="row">
-                    <div class="col-sm-8 offset-sm-2">
+                    <div class="col-sm-12">
                         <div class="card card-primary">
 
                             <!-- /.card-header -->
@@ -116,7 +117,7 @@
              <div class=\"modal-dialog modal-lg\">
           <div class=\"modal-content\">
             <div class=\"modal-header\">
-              <h4 class=\"modal-title\">Student Details</h4>
+              <h4 class=\"modal-title\">Patient Details</h4>
               <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
                 <span aria-hidden=\"true\">&times;</span>
               </button>
@@ -150,7 +151,7 @@
                                     <div class=\"row\">
                                         <div class=\"col-sm-6\">
                                             <div class=\"form-group\">
-                                                <label for=\"patientname\">Patient Name</label>
+                                                <label for=\"patientname\">Name</label>
                                                 <input  value='" . $row['patientname'] . "' disabled class=\"form-control\" id=\"patientname\" name=\"patientname\"
                                                        placeholder=\"Enter Patient Name\"
                                                        type=\"text\" disabled>
@@ -158,7 +159,7 @@
                                         </div>
                                         <div class=\"col-sm-6\">
                                             <div class=\"form-group\">
-                                                <label for=\"patientphone\">Patient Phone Number</label>
+                                                <label for=\"patientphone\">Phone Number</label>
                                                 <input  value='" . $row['patientphone'] . "' disabled class=\"form-control\" id=\"patientphone\" name=\"patientphone\"
                                                        placeholder=\"Enter Patient Phone\"
                                                        type=\"number\">
@@ -169,7 +170,7 @@
                                     <div class=\"row\">
                                         <div class=\"col-sm-6\">
                                             <div class=\"form-group\">
-                                                <label for=\"patientage\">Patient Age</label>
+                                                <label for=\"patientage\">Age</label>
                                                 <input  value='" . $row['patientage'] . "' disabled class=\"form-control\" id=\"patientage\" name=\"patientage\"
                                                        placeholder=\"Enter Patient Age\"
                                                        type=\"text\">
@@ -178,7 +179,7 @@
                                         <div class=\"col-sm-6\">
 
                                             <div class=\"form-group\">
-                                                <label for=\"patientgender\">Patient Gender</label>
+                                                <label for=\"patientgender\">Gender</label>
                                                 <select disabled class=\"form-control\" id=\"patientgender\" name=\"patientgender\">
                                                       <option value=\"\">" . $row['patientgender'] . "</option>
                                                  
@@ -195,7 +196,7 @@
                                     </div>
 
                                     <div class=\"form-group\">
-                                        <label for=\"patientsymptoms\">Patient Symptoms</label>
+                                        <label for=\"patientsymptoms\">Symptoms</label>
                                         <textarea  value=''  disabled class=\"form-control\" id=\"patientsymptoms\"
                                                   name=\"patientsymptoms\" placeholder=\"Enter Sympotoms\"
                                                   rows=\"4\"
@@ -261,17 +262,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class=\"form-group\">
-                                        <label for=\"patientdiagnosis\">Patient Diagnosis</label>
-                                        <textarea  value=''  disabled class=\"form-control\" id=\"patientdiagnosis\"
-                                                  name=\"patientdiagnosis\" placeholder=\"Enter Details\"
-                                                  rows=\"4\"
-                                        >" . $row['patientdiagnosis'] . "</textarea>
-                                    </div>
+                                    
                                     <div class=\"row\">
                                         <div class=\"col-sm-6\">
                                             <div class=\"form-group\">
-                                                <label for=\"patientbloodgroup\">Patient Blood Group</label>
+                                                <label for=\"patientbloodgroup\">Blood Group</label>
                                                 <select disabled class=\"form-control\" id=\"patientbloodgroup\"
                                                         name=\"patientbloodgroup\">
                                                     <option value=\"\">" . $row['patientbloodgroup'] . "</option>
@@ -281,7 +276,7 @@
                                         </div>
                                         <div class=\"col-sm-6\">
                                             <div class=\"form-group\">
-                                                <label for=\"patienthb\">Patient HB</label>
+                                                <label for=\"patienthb\">HB</label>
                                                 <input  value='" . $row['patienthb'] . "' disabled class=\"form-control\" id=\"patienthb\" name=\"patienthb\"
                                                        placeholder=\"Enter Patient HB\"
                                                        type=\"text\">
@@ -292,7 +287,7 @@
                                     <div class=\"row\">
                                         <div class=\"col-sm-4\">
                                             <div class=\"form-group\">
-                                                <label for=\"patientkft\">Patient KFT</label>
+                                                <label for=\"patientkft\">KFT</label>
                                                 <input  value='" . $row['patientkft'] . "' disabled class=\"form-control\" id=\"patientkft\" name=\"patientkft\"
                                                        placeholder=\"Enter Details\"
                                                        type=\"text\">
@@ -301,7 +296,7 @@
                                         <div class=\"col-sm-4\">
 
                                             <div class=\"form-group\">
-                                                <label for=\"patientecg\">Patient ECG</label>
+                                                <label for=\"patientecg\">ECG</label>
                                                 <input  value='" . $row['patientecg'] . "' disabled class=\"form-control\" id=\"patientecg\" name=\"patientecg\"
                                                        placeholder=\"Enter Details\"
                                                        type=\"text\">
@@ -309,23 +304,29 @@
                                         </div>
                                         <div class=\"col-sm-4\">
                                             <div class=\"form-group\">
-                                                <label for=\"patienteco\">Patient ECO</label>
+                                                <label for=\"patienteco\">ECHO</label>
                                                 <input  value='" . $row['patienteco'] . "' disabled class=\"form-control\" id=\"patienteco\" name=\"patienteco\"
                                                        placeholder=\"Enter Details\"
                                                        type=\"text\">
                                             </div>
                                         </div>
                                     </div>
-
+<div class=\"form-group\">
+                                        <label for=\"patientdiagnosis\">Diagnosis</label>
+                                        <textarea  value=''  disabled class=\"form-control\" id=\"patientdiagnosis\"
+                                                  name=\"patientdiagnosis\" placeholder=\"Enter Details\"
+                                                  rows=\"4\"
+                                        >" . $row['patientdiagnosis'] . "</textarea>
+                                    </div>
                                     <div class=\"form-group\">
-                                        <label for=\"patienttreatment\">Patient Treatment</label>
+                                        <label for=\"patienttreatment\">Treatment</label>
                                         <textarea  value=''  disabled class=\"form-control\" id=\"patienttreatment\"
                                                   name=\"patienttreatment\" placeholder=\"Enter Details\"
                                                   rows=\"4\"
                                         >" . $row['patienttreatment'] . "</textarea>
                                     </div>
                                     <div class=\"form-group\">
-                                        <label for=\"patientpriscription\">Patient Prescription</label>
+                                        <label for=\"patientpriscription\">Plan</label>
                                         <textarea  value=''  disabled class=\"form-control\" id=\"patientpriscription\"
                                                   name=\"patientpriscription\" placeholder=\"Enter Details\"
                                                   rows=\"4\"

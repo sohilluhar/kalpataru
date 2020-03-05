@@ -18,7 +18,7 @@
     <div class="sidebar">
         <div class="text-center text-black mt-3
                 brand-text ">
-            Dr. John Doe
+            Doctor
         </div>
 
         <!-- Sidebar user (optional) -->
@@ -48,7 +48,7 @@
                     </a>
                 </li>
 
-                <li class="nav-item has-treeview menu-open">
+                <li class="nav-item">
                     <a href="./addpatient.php" class="nav-link ">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
@@ -130,7 +130,7 @@
                 <!--                    </a>-->
                 <!--                </li>-->
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="./logout.php" class="nav-link">
                         <i class="nav-icon fas fa-arrow-left"></i>
                         <p>
                             Log Out

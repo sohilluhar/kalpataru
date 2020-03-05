@@ -6,7 +6,7 @@ include("include/connection.php");
 <head>
     <?php
     include "include/html_head.php";
-
+    include("include/checkuser.php");
     ?>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -75,7 +75,7 @@ include("include/connection.php");
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label for="patientname">Patient Name</label>
+                                                <label for="patientname">Name</label>
                                                 <input class="form-control" id="patientname" name="patientname"
                                                        placeholder="Enter Patient Name"
                                                        type="text">
@@ -83,9 +83,9 @@ include("include/connection.php");
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label for="patientphone">Patient Phone Number</label>
+                                                <label for="patientphone">Phone Number</label>
                                                 <input class="form-control" id="patientphone" name="patientphone"
-                                                       placeholder="Enter Patient Phone"
+                                                       placeholder="Enter Phone Number"
                                                        type="number">
                                             </div>
                                         </div>
@@ -94,16 +94,16 @@ include("include/connection.php");
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label for="patientage">Patient Age</label>
+                                                <label for="patientage">Age</label>
                                                 <input class="form-control" id="patientage" name="patientage"
-                                                       placeholder="Enter Patient Age"
+                                                       placeholder="Enter Age"
                                                        type="text">
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
 
                                             <div class="form-group">
-                                                <label for="patientgender">Patient Gender</label>
+                                                <label for="patientgender">Gender</label>
                                                 <select class="form-control" id="patientgender" name="patientgender">
                                                     <option value="">Select</option>
                                                     <option value="Male">Male</option>
@@ -114,15 +114,15 @@ include("include/connection.php");
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="patientaddress">Patient Address</label>
+                                        <label for="patientaddress">Address</label>
                                         <textarea class="form-control" id="patientaddress"
-                                                  name="patientaddress" placeholder="Enter Patient Address"
+                                                  name="patientaddress" placeholder="Enter Address"
                                                   rows="4"
                                         ></textarea>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="patientsymptoms">Patient Symptoms</label>
+                                        <label for="patientsymptoms">Symptoms</label>
                                         <textarea class="form-control" id="patientsymptoms"
                                                   name="patientsymptoms" placeholder="Enter Sympotoms"
                                                   rows="4"
@@ -186,17 +186,11 @@ include("include/connection.php");
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="patientdiagnosis">Patient Diagnosis</label>
-                                        <textarea class="form-control" id="patientdiagnosis"
-                                                  name="patientdiagnosis" placeholder="Enter Details"
-                                                  rows="4"
-                                        ></textarea>
-                                    </div>
+
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label for="patientbloodgroup">Patient Blood Group</label>
+                                                <label for="patientbloodgroup">Blood Group</label>
                                                 <select class="form-control" id="patientbloodgroup"
                                                         name="patientbloodgroup">
                                                     <option value="">Select</option>
@@ -213,7 +207,7 @@ include("include/connection.php");
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label for="patienthb">Patient HB</label>
+                                                <label for="patienthb">HB</label>
                                                 <input class="form-control" id="patienthb" name="patienthb"
                                                        placeholder="Enter Patient HB"
                                                        type="text">
@@ -224,7 +218,7 @@ include("include/connection.php");
                                     <div class="row">
                                         <div class="col-sm-4">
                                             <div class="form-group">
-                                                <label for="patientkft">Patient KFT</label>
+                                                <label for="patientkft">KFT</label>
                                                 <input class="form-control" id="patientkft" name="patientkft"
                                                        placeholder="Enter Details"
                                                        type="text">
@@ -233,7 +227,7 @@ include("include/connection.php");
                                         <div class="col-sm-4">
 
                                             <div class="form-group">
-                                                <label for="patientecg">Patient ECG</label>
+                                                <label for="patientecg">ECG</label>
                                                 <input class="form-control" id="patientecg" name="patientecg"
                                                        placeholder="Enter Details"
                                                        type="text">
@@ -241,23 +235,29 @@ include("include/connection.php");
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="form-group">
-                                                <label for="patienteco">Patient ECO</label>
+                                                <label for="patienteco">ECHO</label>
                                                 <input class="form-control" id="patienteco" name="patienteco"
                                                        placeholder="Enter Details"
                                                        type="text">
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
-                                        <label for="patienttreatment">Patient Treatment</label>
+                                        <label for="patientdiagnosis">Diagnosis</label>
+                                        <textarea class="form-control" id="patientdiagnosis"
+                                                  name="patientdiagnosis" placeholder="Enter Details"
+                                                  rows="4"
+                                        ></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="patienttreatment">Treatment</label>
                                         <textarea class="form-control" id="patienttreatment"
                                                   name="patienttreatment" placeholder="Enter Details"
                                                   rows="4"
                                         ></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label for="patientpriscription">Patient Prescription</label>
+                                        <label for="patientpriscription">Plan</label>
                                         <textarea class="form-control" id="patientpriscription"
                                                   name="patientpriscription" placeholder="Enter Details"
                                                   rows="4"
